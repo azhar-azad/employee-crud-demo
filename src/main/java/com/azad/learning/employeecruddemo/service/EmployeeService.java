@@ -1,10 +1,10 @@
-package com.azad.learning.employeecruddemo.dao;
+package com.azad.learning.employeecruddemo.service;
 
 import com.azad.learning.employeecruddemo.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDAO {
+public interface EmployeeService {
 
     public List<Employee> findAll();
 

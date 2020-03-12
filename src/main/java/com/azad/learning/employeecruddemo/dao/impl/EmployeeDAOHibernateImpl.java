@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -24,19 +23,53 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
     }
 
     @Override
-    @Transactional
     public List<Employee> findAll() {
 
         // get the current hibernate session
         Session currentSession = entityManager.unwrap(Session.class);
 
         // create a query
-        Query<Employee> theQuery = currentSession.createQuery("from Employee", Employee.class);
+        Query<Employee> query = currentSession.createQuery("from Employee", Employee.class);
 
         // execute query and get result list
-        List<Employee> employeeList = theQuery.getResultList();
+        List<Employee> employeeList = query.getResultList();
 
         // return the result
         return employeeList;
+    }
+
+    @Override
+    public Employee findById(int id) {
+
+        // get the current hibernate session
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        // get the employee
+        Employee employee = currentSession.get(Employee.class, id);
+
+        // return the employee
+        return employee;
+    }
+
+    @Override
+    public void save(Employee employee) {
+
+        // get the current hibernate session
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        // save employee
+        currentSession.saveOrUpdate(employee); // if id=0 then save, else update
+    }
+
+    @Override
+    public void deleteById(int id) {
+
+        // get the current hibernate session
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        // delete object with primary key
+        Query query = currentSession.createQuery("delete from employee where id=:employeeId");
+        query.setParameter("employeeId", id);
+        query.executeUpdate();
     }
 }
