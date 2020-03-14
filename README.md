@@ -45,4 +45,19 @@
 	
 	JPA method: entityManager.remove()
  
+### v3 Insights: Benefits of Spring Data JPA, JpaRepository
+
+#### Benefits
+ * Create a DAO and just plug in your entity type and primary key
+ * Spring will give you CRUD implementation for FREE ... like MAGIC!!
+ * Helps to minimize boiler-plate DAO code (Approx. more than 70%).
  
+#### JpaRepository
+ * Spring Data JPA provides the interface: JpaRepositoryj
+ * Exposes methods (some by inheritance by parents)
+ * Methods: findAll(), findById(id), save(entity), deleteById(id), others...
+ 
+#### Advanced Features
+ * Extending and adding custom queries with JPQL.
+ * Query Domain Specific Language (Query DSL)
+ * Defining custom methods (low-level coding)
