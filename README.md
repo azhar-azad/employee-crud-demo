@@ -53,8 +53,8 @@
  * Helps to minimize boiler-plate DAO code (Approx. more than 70%).
  
 #### JpaRepository
- * Spring Data JPA provides the interface: JpaRepositoryj
- * Exposes methods (some by inheritance by parents)
+ * Spring Data JPA provides the interface: JpaRepository.
+ * Exposes methods (some by inheritance by parents).
  * Methods: findAll(), findById(id), save(entity), deleteById(id), others...
  
 #### Advanced Features
